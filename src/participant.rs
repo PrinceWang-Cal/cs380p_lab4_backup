@@ -239,7 +239,7 @@ impl Participant {
                         self.state = ParticipantState::AwaitingGlobalDecision;
 
                         // Wait for global decision from coordinator
-                        let timeout = Duration::from_millis(2000);
+                        let timeout = Duration::from_millis(250);
                         let start_time = std::time::Instant::now();
                         let mut decision_received = false;
 
@@ -284,7 +284,7 @@ impl Participant {
                                     }
                                 },
                                 Err(TryRecvError::Empty) => {
-                                    thread::sleep(Duration::from_millis(10));
+                                    thread::sleep(Duration::from_millis(1));
                                 },
                                 Err(TryRecvError::IpcError(_)) => {
                                     break;
@@ -301,7 +301,7 @@ impl Participant {
                     }
                 },
                 Err(TryRecvError::Empty) => {
-                    thread::sleep(Duration::from_millis(10));
+                    thread::sleep(Duration::from_millis(1));
                 },
                 Err(TryRecvError::IpcError(_)) => {
                     break;

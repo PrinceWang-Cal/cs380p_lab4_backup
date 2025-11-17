@@ -127,7 +127,7 @@ impl Client {
 
         info!("{}::Receiving Coordinator Result", self.id_str.clone());
 
-        let timeout = Duration::from_millis(5000);
+        let timeout = Duration::from_millis(250);
         let start_time = std::time::Instant::now();
 
         loop {
@@ -159,7 +159,7 @@ impl Client {
                     }
                 },
                 Err(TryRecvError::Empty) => {
-                    thread::sleep(Duration::from_millis(10));
+                    thread::sleep(Duration::from_millis(1));
                 },
                 Err(TryRecvError::IpcError(_)) => {
                     self.unknown_ops += 1;

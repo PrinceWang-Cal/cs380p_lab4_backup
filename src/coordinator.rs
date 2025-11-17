@@ -156,7 +156,7 @@ impl Coordinator {
             }
 
             if !request_received {
-                thread::sleep(Duration::from_millis(10));
+                thread::sleep(Duration::from_millis(5));
                 continue;
             }
 
@@ -183,7 +183,7 @@ impl Coordinator {
             let mut votes_commit = 0;
             let mut votes_abort = 0;
             let num_participants = self.participant_map.len();
-            let timeout = Duration::from_millis(1000);
+            let timeout = Duration::from_millis(250);
             let start_time = std::time::Instant::now();
 
             while votes_commit + votes_abort < num_participants {
@@ -214,7 +214,7 @@ impl Coordinator {
                     }
                 }
 
-                thread::sleep(Duration::from_millis(10));
+                thread::sleep(Duration::from_millis(1));
             }
 
             // Make decision
@@ -286,7 +286,7 @@ impl Coordinator {
         }
 
         // Give children a moment to receive and process exit messages
-        thread::sleep(Duration::from_millis(100));
+        thread::sleep(Duration::from_millis(50));
 
         self.report_status();
     }
