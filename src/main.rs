@@ -45,7 +45,7 @@ fn spawn_child_and_connect(child_opts: &mut tpcoptions::TPCOptions) -> (Child, S
     let child_process = Command::new(env::current_exe().unwrap())
         .args(child_opts.as_vec())
         .spawn()
-        .expect("Failed to execute child process");
+        .expect("Failed to execute child process"); // TODO: update error message
 
     // Accept connection - child sends us a (Sender, Receiver) tuple
     // This represents the child's end of the communication
