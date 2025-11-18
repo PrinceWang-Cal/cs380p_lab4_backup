@@ -183,7 +183,7 @@ impl Coordinator {
             let mut votes_commit = 0;
             let mut votes_abort = 0;
             let num_participants = self.participant_map.len();
-            let timeout = Duration::from_millis(100);
+            let timeout = Duration::from_millis(50);
             let start_time = std::time::Instant::now();
 
             while votes_commit + votes_abort < num_participants {
