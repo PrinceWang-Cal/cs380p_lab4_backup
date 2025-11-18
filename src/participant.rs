@@ -239,7 +239,7 @@ impl Participant {
                         self.state = ParticipantState::AwaitingGlobalDecision;
 
                         // Wait for global decision from coordinator
-                        let timeout = Duration::from_millis(300);
+                        let timeout = Duration::from_millis(100);
                         let start_time = std::time::Instant::now();
                         let mut decision_received = false;
 

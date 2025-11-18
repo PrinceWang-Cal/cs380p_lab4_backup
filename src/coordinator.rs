@@ -183,7 +183,7 @@ impl Coordinator {
             let mut votes_commit = 0;
             let mut votes_abort = 0;
             let num_participants = self.participant_map.len();
-            let timeout = Duration::from_millis(200);
+            let timeout = Duration::from_millis(100);
             let start_time = std::time::Instant::now();
 
             while votes_commit + votes_abort < num_participants {
@@ -193,12 +193,6 @@ impl Coordinator {
                 }
 
                 if !self.running.load(Ordering::SeqCst) {
-                    break;
-                }
-
-                // Early abort optimization: if any participant votes abort, we can decide immediately
-                if votes_abort > 0 {
-                    trace!("Early abort detected for txid: {}", req.txid);
                     break;
                 }
 
