@@ -127,7 +127,7 @@ impl Client {
 
         info!("{}::Receiving Coordinator Result", self.id_str.clone());
 
-        let timeout = Duration::from_millis(250);
+        let timeout = Duration::from_millis(2000);
         let start_time = std::time::Instant::now();
 
         loop {
