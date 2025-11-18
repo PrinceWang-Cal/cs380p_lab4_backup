@@ -285,7 +285,7 @@ impl Coordinator {
             trace!("Sent exit to participant: {}", name);
         }
 
-        // Give children a moment to receive and process exit messages
+        // Give children time to receive and process exit messages
         thread::sleep(Duration::from_millis(50));
 
         self.report_status();
